@@ -162,10 +162,14 @@ class Calendar {
 		$preMonth = $this->currentMonth == 1 ? 12 : intval($this->currentMonth) - 1;
 		$preYear = $this->currentMonth == 1 ? intval($this->currentYear) - 1 : $this->currentYear;
 
+		$currentMonth = date('n');
+		$currentYear = date("Y");
+
 		return
 			'<div class="header">' .
 			'<a class="prev" href="' . $this->naviHref . '?month=' . sprintf('%02d', $preMonth) . '&year=' . $preYear . '">Prev</a>' .
 			'<span class="title">' . date('Y M', strtotime($this->currentYear . '-' . $this->currentMonth . '-1')) . '</span>' .
+			'<a class="today" href="' . $this->naviHref . '?month=' . sprintf("%02d", $currentMonth) . '&year=' . $currentYear . '">Today</a>' .
 			'<a class="next" href="' . $this->naviHref . '?month=' . sprintf("%02d", $nextMonth) . '&year=' . $nextYear . '">Next</a>' .
 			'</div>';
 	}

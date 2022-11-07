@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 echo "Hello there, this is a PHP Apache container";
 
 //These are the defined authentication environment in the db service
@@ -19,6 +21,8 @@ if ($conn->connect_error) {
 } else {
     echo "Connected to MySQL server successfully!";
 }
+
+$_SESSION['cpny_id'] = 1;
 ?>
 
 
@@ -52,6 +56,13 @@ if ($conn->connect_error) {
 
     echo $calendar->show();
     ?>
+
+    <script>
+        // Prevent form submit on page refresh
+        if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
+        }
+    </script>
 </body>
 
 </html>
